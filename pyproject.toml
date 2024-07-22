@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "domain-matcher"
+version = "0.1.0"
+description = "Protect your models from out of scope domains. Focus on what matters."
+authors = ["Dref360 <fred@glowstick.cx>"]
+license = "Apache V2"
+readme = "README.md"
+packages = [{include = "domain_matcher"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+transformers = "^4.41.2"
+datasets = "^2.19.2"
+pydantic = "^2.7.3"
+scikit-learn = "^1.5.0"
+torch = "^2.3.1"
+bertopic = "^0.16.2"
+sentence-transformers = "^3.0.1"
+keybert = "^0.8.4"
+tensorboard = "^2.17.0"
+accelerate = "^0.31.0"
+plotly = "^5.22.0"
+seaborn = "^0.13.2"
+matplotlib = "^3.9.0"
+pandas = "^2.2.2"
+typer = {extras = ["all"], version = "^0.12.3"}
+structlog = "^24.2.0"
+orjson = "^3.10.3"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "<=1.0.1"
+isort = "^5.13.2"
+pre-commit = "^3.7.1"
+nb-clean = "^3.2.0"
+ruff = "^0.4.8"
+pytest = "^8.2.2"
+jupyter = "^1.0.0"
+
+[tool.ruff]
+line-length = 100
+indent-width = 4
+
+# Assume Python 3.9
+target-version = "py39"
+
+[tool.mypy]
+plugins = []
+python_version = 3.9
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["torch.*"]
+follow_imports = "skip"
+follow_imports_for_stubs = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
